@@ -1,0 +1,16 @@
+<h2>Subject: Why is my site coming from California?</h2>
+<p>Hi there,</p>
+<p>Great question! Cloudflare uses a global Anycast network to serve content from the nearest data center to the client. Normally, a user in London should be routed to a London or nearby European Cloudflare edge server.</p>
+
+<p>However, a few reasons why you might see a California IP:</p>
+<ul>
+  <li>Your ISP's DNS resolver is routing you to a US POP due to its peering.</li>
+  <li>Your site might not be cached yet at a local POP, so the request goes upstream.</li>
+  <li>If you're testing from a VPN or proxy, that could affect routing.</li>
+</ul>
+
+<p>To verify, I’d use the <code>CF-Ray</code> header on your response — the suffix of that ID tells us which Cloudflare POP served your request. You can also run a traceroute to your domain to see the path your traffic is taking.</p>
+
+<p><strong>Tools I’d use:</strong> cURL with <code>-I</code>, CF-Ray analysis, traceroute, Cloudflare Analytics</p>
+
+<p>Let me know your site and I can help check where you’re really being routed from!</p>

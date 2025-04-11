@@ -1,0 +1,15 @@
+<h2>Subject: Workers not applied</h2>
+<p>Hi there,</p>
+<p>If the Worker runs in the debugger but not in production, there are a few things we can check:</p>
+
+<ol>
+  <li>Ensure the Worker is <strong>deployed</strong> and not just saved — use the 'Save and Deploy' button.</li>
+  <li>Make sure the route (like <code>example.com/*</code>) is configured correctly in your Worker settings and matches your domain.</li>
+  <li>Check that the Worker is actually attached to the correct zone.</li>
+</ol>
+
+<p>Another common issue is caching — if the content is cached at the edge, the Worker might not execute on subsequent requests unless you're using a no-cache directive or bypassing cache.</p>
+
+<p><strong>Tools I’d use:</strong> Cloudflare Dashboard > Workers tab, HTTP headers to check cache status, Developer Tools in browser</p>
+
+<p>Let me know your route setup if you want a second pair of eyes on it!</p>

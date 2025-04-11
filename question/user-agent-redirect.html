@@ -1,0 +1,24 @@
+<h2>Subject: Redirect based on User-Agent</h2>
+<p>Hi there,</p>
+<p>You’re absolutely right — Cloudflare’s Page Rules don’t currently support conditional logic based on user agents.</p>
+
+<p>The best way to achieve this is with a <strong>Cloudflare Worker</strong>. You can inspect the <code>User-Agent</code> header and conditionally return a redirect like so:</p>
+
+<pre><code>addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const ua = request.headers.get("User-Agent") || ""
+  if (ua.includes("MSIE 8.0")) {
+    return Response.redirect("https://example.com/ie8-unsupported", 302)
+  }
+  return fetch(request)
+}
+</code></pre>
+
+<p>Workers give you full control over the HTTP request and can do these kinds of custom behaviors at the edge.</p>
+
+<p><strong>Tools I’d use:</strong> Cloudflare Workers Dashboard, Logs, Workers Preview/Test</p>
+
+<p>Let me know if you want help deploying this script!</p>

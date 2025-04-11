@@ -1,0 +1,16 @@
+<h2>Subject: Cloudflare Nameservers vs Google DNS/OpenDNS</h2>
+<p>Hi there,</p>
+<p>Thanks for the great question. Cloudflare’s nameservers differ from services like Google DNS or OpenDNS in a key way:</p>
+
+<ul>
+  <li><strong>Cloudflare Nameservers</strong> are authoritative DNS servers — they serve DNS records for domains hosted on Cloudflare.</li>
+  <li><strong>Google DNS / OpenDNS</strong> are public resolvers — they resolve queries on behalf of users but don’t host domain DNS records themselves.</li>
+</ul>
+
+<p>To answer your second question — if you want to use Cloudflare as your CDN, you’ll need to delegate your domain to Cloudflare’s authoritative nameservers. You can't use Cloudflare as a CDN while still keeping your DNS hosted entirely by your registrar or host.</p>
+
+<p>That said, Cloudflare can integrate with some external DNS setups using <strong>partial (CNAME) setup</strong> for Enterprise plans.</p>
+
+<p><strong>Tools I’d use:</strong> DNS tab in Cloudflare, <code>dig NS yourdomain.com</code></p>
+
+<p>Let me know your current setup and I can guide you on the best approach!</p>

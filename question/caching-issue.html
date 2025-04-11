@@ -1,0 +1,17 @@
+<h2>Subject: Content not being cached</h2>
+<p>Hi there,</p>
+<p>I’ve looked at the cURL output and can see that the response headers show <code>Cache-Control: no-store, no-cache</code>. This is coming from your origin server and instructs Cloudflare <strong>not</strong> to cache your content.</p>
+
+<p>To allow Cloudflare to cache your pages, you have a few options:</p>
+
+<ul>
+  <li>Update your origin to return cache-friendly headers like <code>Cache-Control: public, max-age=3600</code></li>
+  <li>Use a <strong>Page Rule</strong> or <strong>Cache Rule</strong> in Cloudflare to override and force caching on static content.</li>
+  <li>Enable “Cache Everything” (with caution if your content is dynamic)</li>
+</ul>
+
+<p>Also, ensure you're using HTTPS and that Edge Caching is enabled under the Caching tab.</p>
+
+<p><strong>Tools I’d use:</strong> cURL, Browser Dev Tools, Cache Analytics, Page Rules</p>
+
+<p>Happy to help you configure a specific rule if you send the URL you'd like cached!</p>

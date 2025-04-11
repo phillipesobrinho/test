@@ -1,0 +1,8 @@
+name = "worker-name"
+compatibility_date = "2025-04-11"
+
+[build]
+  command = "npm run build"
+
+[env.production]
+  main = "src/index.html"
